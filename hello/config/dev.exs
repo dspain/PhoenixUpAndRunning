@@ -51,7 +51,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :hello, Hello.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: "damianspain",
   password: "postgres",
   database: "hello_dev",
   hostname: "localhost",
