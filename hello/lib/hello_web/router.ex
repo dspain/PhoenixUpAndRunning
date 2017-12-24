@@ -23,9 +23,16 @@ defmodule HelloWeb.Router do
       resources "/posts", PostController
     end
     resources "/comments", CommentController, except: [:delete]
+    resources "/reviews", ReviewController
   end
 
   forward "/jobs", BackgroundJob.Plug, name: "Hello Phoenix"
+
+  scope "/admin", as: :admin do
+    pipe_through :browser
+
+    resources "/reviews", HelloWeb.Admin.ReviewController
+  end
   # Other scopes may use custom stacks.
   # scope "/api", HelloWeb do
   #   pipe_through :api
