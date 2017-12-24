@@ -26,7 +26,7 @@ defmodule HelloWeb.Router do
 
   scope "/" do
     pipe_through [:authenticate_user, :ensure_admin]
-    forward "/jobs", BackgroundJob.Plug
+    forward "/jobs", BackgroundJob.Plug, name: "Hello Phoenix"
   end
   # Other scopes may use custom stacks.
   # scope "/api", HelloWeb do
