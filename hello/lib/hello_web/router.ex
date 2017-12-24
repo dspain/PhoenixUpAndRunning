@@ -24,10 +24,7 @@ defmodule HelloWeb.Router do
     resources "/comments", CommentController, except: [:delete]
   end
 
-  scope "/" do
-    pipe_through [:authenticate_user, :ensure_admin]
-    forward "/jobs", BackgroundJob.Plug, name: "Hello Phoenix"
-  end
+  forward "/jobs", BackgroundJob.Plug, name: "Hello Phoenix"
   # Other scopes may use custom stacks.
   # scope "/api", HelloWeb do
   #   pipe_through :api
