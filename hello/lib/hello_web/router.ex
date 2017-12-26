@@ -13,6 +13,11 @@ defmodule HelloWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :review_checks do
+    plug :ensure_authenticated_user
+    plug :ensure_user_owns_review
+  end
+
   scope "/", HelloWeb do
     pipe_through :browser # Use the default browser stack
 
@@ -36,13 +41,9 @@ defmodule HelloWeb.Router do
     resources "/users",   UserController
   end
 
-  scope "/api", HelloWeb.Api, as: :api do
-    pipe_through :api
+  scope "/reviews", HelloWeb do
+    pipe_through :review_checks
 
-    scope "/v1", V1, as: :v1 do
-      resources "/images", ImageController
-      resources "/reviews", ReviewController
-      resources "/users", UserController
-    end
+    resources "/", ReviewController
   end
 end
