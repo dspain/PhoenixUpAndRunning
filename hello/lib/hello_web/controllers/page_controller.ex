@@ -4,6 +4,7 @@ defmodule HelloWeb.PageController do
   def index(conn, _params) do
     conn
     |> assign(:message, "Welcome Back!")
+    |> assign(:name, "Dweezil")
     |> render("index.html")
   end
 
