@@ -1,10 +1,11 @@
 defmodule HelloWeb.PageController do
   use HelloWeb, :controller
 
+  plug :assign_welcome_message, "Welcome Back"
+
   def index(conn, _params) do
     conn
-    |> assign(:message, "Welcome Back!")
-    |> assign(:name, "Dweezil")
+    # |> assign(:message, "Welcome Forward")
     |> render("index.html")
   end
 
@@ -19,5 +20,9 @@ defmodule HelloWeb.PageController do
         </body>
       </html>
     """
+  end
+
+  defp assign_welcome_message(conn, msg) do
+    assign(conn, :message, msg)
   end
 end
