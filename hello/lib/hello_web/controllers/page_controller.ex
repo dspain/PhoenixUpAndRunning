@@ -9,6 +9,6 @@ defmodule HelloWeb.PageController do
   end
 
   def show(conn, %{"id" => id}) do
-    text conn, "Showing id #{id}"
+    json conn, %{id: id}
   end
 end
