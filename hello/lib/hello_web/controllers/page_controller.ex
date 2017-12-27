@@ -1,7 +1,7 @@
 defmodule HelloWeb.PageController do
   use HelloWeb, :controller
 
-  plug :assign_welcome_message, "Welcome Back"
+  plug :assign_welcome_message, "Welcome Back" when action in [:index, :show]
 
   def index(conn, _params) do
     conn
