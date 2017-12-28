@@ -5,10 +5,8 @@ defmodule HelloWeb.PageController do
 
   def index(conn, _params) do
     conn
-    # |> assign(:message, "Welcome Forward")
-    # |> render("index.html")
-    |> put_resp_content_type("text/plain")
-    |> send_resp(201, "")
+    |> put_layout(false)
+    |> render("index.html")
   end
 
   def show(conn, %{"id" => id}) do
