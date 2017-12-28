@@ -13,6 +13,7 @@ defmodule HelloWeb.PostFinder do
       {:error, :notfound} ->
         conn
         |> send_resp(404, "Not found")
+        |> halt()
     end
   end
 
