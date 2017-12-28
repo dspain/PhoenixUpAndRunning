@@ -3,8 +3,10 @@ defmodule HelloWeb.PageController do
 
   plug :assign_welcome_message, "Welcome Back" when action in [:index, :show]
 
-  def index(conn, params) do
-    render conn, "index.text", message: params["message"]
+  def index(conn, _params) do
+    conn
+    |> put_status(202)
+    |> render("index.html")
   end
 
   def show(conn, %{"id" => id}) do
