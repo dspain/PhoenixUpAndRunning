@@ -7,6 +7,7 @@ defmodule HelloWeb.PageController do
     conn
     # |> assign(:message, "Welcome Forward")
     # |> render("index.html")
+    |> put_resp_content_type("text/plain")
     |> send_resp(201, "")
   end
 
