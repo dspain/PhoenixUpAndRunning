@@ -47,4 +47,9 @@ defmodule HelloWeb.Router do
 
     resources "/", ReviewController
   end
+
+  # New route for redirects
+  scope "/", HelloWeb do
+    get "/redirect_test", PageController, :redirect_test, as: :redirect_test
+  end
 end

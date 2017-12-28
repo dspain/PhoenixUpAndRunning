@@ -4,10 +4,11 @@ defmodule HelloWeb.PageController do
   plug :assign_welcome_message, "Welcome Back" when action in [:index, :show]
 
   def index(conn, _params) do
-    conn
-    |> put_status(:not_found)
-    |> put_view(HelloWeb.ErrorView)
-    |> render("404.html")
+    redirect conn, to: "/redirect_test"
+  end
+
+  def redirect_test(conn, _params) do
+    text conn, "Redirect!"
   end
 
   def show(conn, %{"id" => id}) do
