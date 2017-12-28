@@ -6,7 +6,8 @@ defmodule HelloWeb.PageController do
   def index(conn, _params) do
     conn
     |> put_status(:not_found)
-    |> render("index.html")
+    |> put_view(HelloWeb.ErrorView)
+    |> render("404.html")
   end
 
   def show(conn, %{"id" => id}) do
