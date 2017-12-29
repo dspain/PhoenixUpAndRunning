@@ -4,7 +4,7 @@ defmodule HelloWeb.PageController do
   plug :assign_welcome_message, "Welcome Back" when action in [:index, :show]
 
   def index(conn, _params) do
-    redirect conn, external: redirect_test_url(conn, :redirect_test)
+    render conn, "index.html"
   end
 
   def redirect_test(conn, _params) do
