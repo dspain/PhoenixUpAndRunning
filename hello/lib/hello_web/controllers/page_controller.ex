@@ -4,7 +4,9 @@ defmodule HelloWeb.PageController do
   plug :assign_welcome_message, "Welcome Back" when action in [:index, :show]
 
   def index(conn, _params) do
-    render conn, "index.html"
+    pages = [%{title: "foo"}, %{title: "bar"}]
+
+    render conn, "index.json", pages: pages
   end
 
   def redirect_test(conn, _params) do
@@ -12,16 +14,9 @@ defmodule HelloWeb.PageController do
   end
 
   def show(conn, %{"id" => id}) do
-    html conn, """
-      <html>
-        <head>
-          <title>Passing an Id</title>
-        </head>
-        <body>
-          <p>You sent in id #{id}</p>
-        </body>
-      </html>
-    """
+    page = %{title: "foo"}
+
+    render conn, "show.json", page: page
   end
 
   defp assign_welcome_message(conn, msg) do
