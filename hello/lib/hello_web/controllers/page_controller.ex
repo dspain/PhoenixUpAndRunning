@@ -19,6 +19,10 @@ defmodule HelloWeb.PageController do
     render conn, "show.json", page: page
   end
 
+  def test(conn, _params) do
+    render conn, "test.html"
+  end
+
   defp assign_welcome_message(conn, msg) do
     assign(conn, :message, msg)
   end
