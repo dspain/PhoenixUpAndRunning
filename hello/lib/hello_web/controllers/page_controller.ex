@@ -4,9 +4,7 @@ defmodule HelloWeb.PageController do
   plug :assign_welcome_message, "Welcome Back" when action in [:index, :show]
 
   def index(conn, _params) do
-    pages = [%{title: "foo"}, %{title: "bar"}]
-
-    render conn, "index.json", pages: pages
+    render conn, "index.html"
   end
 
   def redirect_test(conn, _params) do
