@@ -30,7 +30,7 @@ function renderOnlineUsers(presence) {
   let response = "";
 
   Presence.list(presences, (id, {metas: [first, ...rest]}) => {
-    let count = rest.legnth + 1
+    let count = rest.length + 1
     response += `<br>${id} (count: ${count})</br>`
   });
 
