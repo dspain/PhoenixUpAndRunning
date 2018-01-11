@@ -22,35 +22,7 @@ defmodule HelloWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/test", PageController, :test
-    get "/our_path/:id", PageController, :show
-    get "/hello", HelloController, :index
-    get "/hello/:messenger", HelloController, :show
-    resources "/users", UserController do
-      resources "/posts", PostController
-    end
-    resources "/comments", CommentController, except: [:delete]
-    resources "/reviews", ReviewController
+    resources "/users", UserController
   end
 
-  forward "/jobs", BackgroundJob.Plug, name: "Hello Phoenix"
-
-  scope "/admin", HelloWeb.Admin, as: :admin do
-    pipe_through :browser
-
-    resources "/images",  ImageController
-    resources "/reviews", ReviewController
-    resources "/users",   UserController
-  end
-
-  scope "/reviews", HelloWeb do
-    # pipe_through :review_checks
-
-    resources "/", ReviewController
-  end
-
-  # New route for redirects
-  scope "/", HelloWeb do
-    get "/redirect_test", PageController, :redirect_test, as: :redirect_test
-  end
 end
