@@ -20,6 +20,7 @@ defmodule HelloWeb.CMS.PageController do
         conn
         |> put_flash(:info, "Page created successfully.")
         |> redirect(to: cms_page_path(conn, :show, page))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -44,6 +45,7 @@ defmodule HelloWeb.CMS.PageController do
         conn
         |> put_flash(:info, "Page updated successfully.")
         |> redirect(to: cms_page_path(conn, :show, page))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", page: page, changeset: changeset)
     end

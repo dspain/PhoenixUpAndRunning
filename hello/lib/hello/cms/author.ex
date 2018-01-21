@@ -3,12 +3,11 @@ defmodule Hello.CMS.Author do
   import Ecto.Changeset
   alias Hello.CMS.Author
 
-
   schema "authors" do
-    field :bio, :string
-    field :genre, :string
-    field :role, :string
-    field :user_id, :id
+    field(:bio, :string)
+    field(:genre, :string)
+    field(:role, :string)
+    field(:user_id, :id)
 
     timestamps()
   end

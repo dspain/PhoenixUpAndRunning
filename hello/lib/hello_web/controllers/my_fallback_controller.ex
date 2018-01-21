@@ -15,5 +15,4 @@ defmodule HelloWeb.MyFallbackController do
     |> put_view(ErrorView)
     |> render(:"403")
   end
-
 end

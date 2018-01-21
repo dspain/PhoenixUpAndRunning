@@ -3,11 +3,10 @@ defmodule Hello.CMS.Page do
   import Ecto.Changeset
   alias Hello.CMS.Page
 
-
   schema "pages" do
-    field :body, :string
-    field :title, :string
-    field :views, :integer
+    field(:body, :string)
+    field(:title, :string)
+    field(:views, :integer)
 
     timestamps()
   end

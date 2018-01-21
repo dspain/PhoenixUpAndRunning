@@ -68,6 +68,7 @@ defmodule HelloWeb.Presence do
   information, while maintaining the required `:metas` field from the
   original presence data.
   """
-  use Phoenix.Presence, otp_app: :hello,
-                        pubsub_server: Hello.PubSub
+  use Phoenix.Presence,
+    otp_app: :hello,
+    pubsub_server: Hello.PubSub
 end

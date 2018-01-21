@@ -2,15 +2,15 @@ defmodule HelloWeb.Router do
   use HelloWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html", "text"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html", "text"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   # pipeline :review_checks do
@@ -19,17 +19,18 @@ defmodule HelloWeb.Router do
   # end
 
   scope "/", HelloWeb do
-    pipe_through :browser # Use the default browser stack
+    # Use the default browser stack
+    pipe_through(:browser)
 
-    get "/", PageController, :index
-    resources "/users", UserController
-    resources "/sessions", SessionController, only: [:new, :create, :delete], singleton: true
+    get("/", PageController, :index)
+    resources("/users", UserController)
+    resources("/sessions", SessionController, only: [:new, :create, :delete], singleton: true)
   end
 
   scope "/cms", HelloWeb.CMS, as: :cms do
-    pipe_through [:browser, :authenticate_user]
+    pipe_through([:browser, :authenticate_user])
 
-    resources "/pages", PageController
+    resources("/pages", PageController)
   end
 
   defp authenticate_user(conn, _) do
@@ -39,6 +40,7 @@ defmodule HelloWeb.Router do
         |> Phoenix.Controller.put_flash(:error, "Login required")
         |> Phoenix.Controller.redirect(to: "/")
         |> halt()
+
       user_id ->
         assign(conn, :current_user, Hello.Accounts.get_user!(user_id))
     end
