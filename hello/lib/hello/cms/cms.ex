@@ -55,9 +55,10 @@ defmodule Hello.CMS do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_page(attrs \\ %{}) do
+  def create_page(%Author{} = author, attrs \\ %{}) do
     %Page{}
     |> Page.changeset(attrs)
+    |> Ecto.Changeset.put_change(:author_id, author.id)
     |> Repo.insert()
   end
 
@@ -206,5 +207,19 @@ defmodule Hello.CMS do
   """
   def change_author(%Author{} = author) do
     Author.changeset(author, %{})
+  end
+
+  def ensure_author_exists(%Accounts.User{} = user) do
+    %Author{user_id: user.id}
+    |> Ecto.Changeset.change()
+    |> Ecto.Changeset.unique_constraint(:user_id)
+    |> Repo.insert()
+    |> handle_existing_author()
+  end
+
+  defp handle_existing_author({:ok, author}), do: author
+
+  defp handle_existing_author({:error, changeset}) do
+    Repo.get_by!(Author, user_id: changeset.data.user_id)
   end
 end
