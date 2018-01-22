@@ -52,7 +52,6 @@ defmodule HelloWeb.CMS.PageController do
   end
 
   def delete(conn, _) do
-    page = CMS.get_page!(id)
     {:ok, _page} = CMS.delete_page(conn.assigns.page)
 
     conn

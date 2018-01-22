@@ -7,6 +7,7 @@ defmodule Hello.CMS do
   alias Hello.Repo
 
   alias Hello.CMS.{Page, Author}
+  alias Hello.Accounts
 
   @doc """
   Returns the list of pages.
