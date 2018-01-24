@@ -11,8 +11,14 @@ config :hello2, Hello2Web.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    node: [
+      "node_modules/brunch/bin/brunch",
+      "watch",
+      "--stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #
@@ -51,7 +57,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :hello2, Hello2.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: "damianspain",
   password: "postgres",
   database: "hello2_dev",
   hostname: "localhost",

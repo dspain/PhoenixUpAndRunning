@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :hello2, Hello2.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: "damianspain",
   password: "postgres",
   database: "hello2_test",
   hostname: "localhost",
