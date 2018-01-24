@@ -11,7 +11,7 @@ defmodule Hello2.Application do
       # Start the Ecto repository
       supervisor(Hello2.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Hello2Web.Endpoint, []),
+      supervisor(Hello2Web.Endpoint, [])
       # Start your own worker by calling: Hello2.Worker.start_link(arg1, arg2, arg3)
       # worker(Hello2.Worker, [arg1, arg2, arg3]),
     ]

@@ -26,13 +26,13 @@ defmodule Hello2Web.ConnCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Hello2.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Hello2.Repo, {:shared, self()})
     end
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
-
 end
