@@ -3,12 +3,11 @@ defmodule Hello2.Users.User do
   import Ecto.Changeset
   alias Hello2.Users.User
 
-
   schema "users" do
-    field :bio, :string
-    field :email, :string
-    field :name, :string
-    field :number_of_pets, :integer
+    field(:bio, :string)
+    field(:email, :string)
+    field(:name, :string)
+    field(:number_of_pets, :integer)
 
     timestamps()
   end
@@ -17,6 +16,6 @@ defmodule Hello2.Users.User do
   def changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:name, :email, :bio, :number_of_pets])
-    |> validate_required([:name, :email, :bio, :number_of_pets])
+    |> validate_required([:name, :email, :bio])
   end
 end
