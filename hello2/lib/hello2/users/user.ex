@@ -17,6 +17,6 @@ defmodule Hello2.Users.User do
     user
     |> cast(attrs, [:name, :email, :bio, :number_of_pets])
     |> validate_required([:name, :email, :bio])
-    |> validate_length(:bio, min: 2)
+    |> validate_length(:bio, min: 2, max: 140)
   end
 end

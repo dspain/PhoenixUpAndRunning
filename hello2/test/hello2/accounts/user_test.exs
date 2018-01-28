@@ -26,4 +26,10 @@ defmodule Hello2.Users.UserTest do
     changeset = User.changeset(%User{}, attrs)
     assert %{bio: ["should be at least 2 character(s)"]} = errors_on(changeset)
   end
+
+  test "bio must be at most 140 characters long" do
+    attrs = %{@valid_attrs | bio: String.duplicate("a", 141)}
+    changeset = User.changeset(%User{}, attrs)
+    assert %{bio: ["should be at most 140 character(s)"]} = errors_on(changeset)
+  end
 end
