@@ -6,8 +6,13 @@ defmodule Hello2.UsersTest do
   describe "users" do
     alias Hello2.Users.User
 
-    @valid_attrs %{bio: "some bio", email: "some email", name: "some name", number_of_pets: 42}
-    @update_attrs %{bio: "some updated bio", email: "some updated email", name: "some updated name", number_of_pets: 43}
+    @valid_attrs %{bio: "some bio", email: "some@email", name: "some name", number_of_pets: 42}
+    @update_attrs %{
+      bio: "some updated bio",
+      email: "some updated@email",
+      name: "some updated name",
+      number_of_pets: 43
+    }
     @invalid_attrs %{bio: nil, email: nil, name: nil, number_of_pets: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -32,7 +37,7 @@ defmodule Hello2.UsersTest do
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
       assert user.bio == "some bio"
-      assert user.email == "some email"
+      assert user.email == "some@email"
       assert user.name == "some name"
       assert user.number_of_pets == 42
     end
@@ -46,7 +51,7 @@ defmodule Hello2.UsersTest do
       assert {:ok, user} = Users.update_user(user, @update_attrs)
       assert %User{} = user
       assert user.bio == "some updated bio"
-      assert user.email == "some updated email"
+      assert user.email == "some updated@email"
       assert user.name == "some updated name"
       assert user.number_of_pets == 43
     end

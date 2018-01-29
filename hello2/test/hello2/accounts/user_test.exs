@@ -32,4 +32,10 @@ defmodule Hello2.Users.UserTest do
     changeset = User.changeset(%User{}, attrs)
     assert %{bio: ["should be at most 140 character(s)"]} = errors_on(changeset)
   end
+
+  test "email must contain at least an @" do
+    attrs = %{@valid_attrs | email: "fooexample.com"}
+    changeset = User.changeset(%User{}, attrs)
+    assert %{email: ["has invalid format"]} = errors_on(changeset)
+  end
 end
